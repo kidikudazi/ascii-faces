@@ -66,6 +66,17 @@ class Index extends Component{
 	      this.handleProduct();
 	    }
 	}
+
+	sortData = event=>{
+		this.setState({product:[], loader:{display:"block"}, isLoading:true});
+		if(event.target.value != null || event.target.value != ''){
+
+			this.state._sort = event.target.value;
+			this.setState({_sort:event.target.value})
+			this.handleProduct();
+		}
+	}
+
 	render(){
 		return (
 			<div>
@@ -76,6 +87,16 @@ class Index extends Component{
 				</header>
 				<br/><br/><br/><br/><br/>
 				<div className="container-fluid">
+					<div className="row">
+						<div className="col-md-2 offset-md-10 mb-2">
+						    <select className="form-control" onChange={this.sortData}>
+						    	<option value="">Sort By</option>
+						    	<option value="id">Id</option>
+						    	<option value="price">Price</option>
+						    	<option value="size">Size</option>
+						    </select>
+						</div>
+					</div>
 					<div className="row">
 						<GridBody characterData={this.state.product}/>
 					</div>
