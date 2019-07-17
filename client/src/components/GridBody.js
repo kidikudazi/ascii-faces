@@ -5,7 +5,9 @@ import API_BASE_PATH from '../http/url'
 
 const GridBody = props => {
 	const ProductDisplay = [];
+	
 	const Products = props.characterData;
+	// loop through product to display
 	var rows = Products.forEach((row, index)=>{
 		ProductDisplay.push(
     		<div className="col-md-4 col-sm-6 col-xs-12 mb-4" key={index}>
@@ -31,11 +33,13 @@ const GridBody = props => {
 		    )
 	    }
 	})
-	    return (
-		   
-		      ProductDisplay
-		    
-	    )
+
+	//return all fetched products
+    return (
+	   
+	      ProductDisplay
+	    
+    )
 }
 
 export default GridBody

@@ -7,6 +7,8 @@ class Index extends Component{
 	constructor (props)
 	{
 		super(props)
+
+		// declare all state's that will be used
 		this.state={
 			_page:1,
 			_limit:20,
@@ -22,6 +24,7 @@ class Index extends Component{
 		}
 	}
 
+	// initalizes basic operations the on page
 	componentWillMount(){
 		var vm =this;
 		this.handleProduct()
@@ -32,6 +35,7 @@ class Index extends Component{
 	   window.removeEventListener('scroll', debounce(this.pageScroll, 100));
 	}
 
+	// handles all basic operations to fetch products
 	handleProduct = ()=>{
 		var vm = this;
 		Products.getAllProduct(vm.state._page, vm.state._limit, vm.state._sort)
@@ -51,6 +55,7 @@ class Index extends Component{
 		})
 	}
 
+	// carry out scroll event to load more product
 	pageScroll = () =>{
 		const preloadOffset = 4000;
 	    const scrollHeight = document.body.scrollHeight;
@@ -67,6 +72,7 @@ class Index extends Component{
 	    }
 	}
 
+	//sort product based on selected sort order
 	sortData = event=>{
 		this.setState({product:[], loader:{display:"block"}, isLoading:true});
 		if(event.target.value != null || event.target.value != ''){
